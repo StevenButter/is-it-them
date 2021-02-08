@@ -11,10 +11,14 @@ def _GetFilename():
 
 
 if __name__ == "__main__":
-    data = whatsapp_reader.read(_GetFilename())
-    classifier = NaiveBayesClassifier(data)
+    try:
+        data = whatsapp_reader.read(_GetFilename())
+        classifier = NaiveBayesClassifier(data)
 
-    txt = input('Type something: ')
-    person = classifier.classify(txt)
+        while True:
+            txt = input('Type something: ')
+            person = classifier.classify(txt)
 
-    print('it\'s {}'.format(person))
+            print('it\'s {}'.format(person))
+    except KeyboardInterrupt:
+        pass
